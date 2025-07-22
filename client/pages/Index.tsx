@@ -379,7 +379,7 @@ export default function Index() {
               </p>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                <span>Serving Downtown &amp; Surrounding Areas</span>
+                <span>Serving Ahmedabad &amp; Surrounding Areas</span>
               </div>
             </div>
 
