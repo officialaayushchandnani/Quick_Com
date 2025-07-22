@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LoginForm } from '@/components/auth/LoginForm';
+import { CartDrawer } from '@/components/cart/CartDrawer';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCart, Product } from '@/contexts/CartContext';
 import {
