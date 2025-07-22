@@ -188,7 +188,7 @@ export default function AdminDashboard() {
     return matchesSearch && matchesCategory;
   });
 
-  const categories = ['All', ...Array.from(new Set(products.map(p => p.category)))];
+  const availableCategories = categories.filter(cat => cat !== 'All');
 
   return (
     <div className="min-h-screen bg-background">
