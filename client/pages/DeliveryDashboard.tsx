@@ -62,7 +62,7 @@ const activeDeliveries = [
       coordinates: { lat: 23.0325, lng: 72.5581 }
     },
     items: ['Orange Juice', 'Fresh Milk'],
-    amount: 67.30,
+    amount: 185,
     status: 'Assigned',
     estimatedTime: '25 mins',
     specialInstructions: 'Leave at gate if no one answers'
