@@ -66,6 +66,7 @@ const ahmedabadZones = [
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [products, setProducts] = useState<Product[]>(demoProducts);
   const [activeTab, setActiveTab] = useState('overview');
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
