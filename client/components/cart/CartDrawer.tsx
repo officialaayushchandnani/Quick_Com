@@ -130,10 +130,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                             </div>
                             <div className="text-right">
                               <p className="font-semibold">
-                                $
-                                {(item.product.price * item.quantity).toFixed(
-                                  2,
-                                )}
+                                ₹{(item.product.price * item.quantity).toFixed(0)}
                               </p>
                               <Button
                                 size="sm"
