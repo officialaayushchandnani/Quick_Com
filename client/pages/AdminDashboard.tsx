@@ -36,12 +36,12 @@ import {
 
 // Demo data
 const demoProducts: Product[] = [
-  { id: '1', name: 'Fresh Milk', price: 3.99, image: '/placeholder.svg', category: 'Dairy', description: 'Fresh organic milk from local farms', stock: 50, deliveryTime: '15 mins', rating: 4.8, reviews: 124 },
-  { id: '2', name: 'Brown Bread', price: 2.49, image: '/placeholder.svg', category: 'Bakery', description: 'Freshly baked whole wheat bread', stock: 30, deliveryTime: '10 mins', rating: 4.6, reviews: 89 },
-  { id: '3', name: 'Bananas', price: 1.99, image: '/placeholder.svg', category: 'Fruits', description: 'Fresh organic bananas', stock: 75, deliveryTime: '12 mins', rating: 4.7, reviews: 156 },
-  { id: '4', name: 'Greek Yogurt', price: 5.99, image: '/placeholder.svg', category: 'Dairy', description: 'Creamy Greek yogurt with probiotics', stock: 25, deliveryTime: '18 mins', rating: 4.9, reviews: 203 },
-  { id: '5', name: 'Tomatoes', price: 3.49, image: '/placeholder.svg', category: 'Vegetables', description: 'Fresh red tomatoes', stock: 40, deliveryTime: '14 mins', rating: 4.5, reviews: 78 },
-  { id: '6', name: 'Orange Juice', price: 4.99, image: '/placeholder.svg', category: 'Beverages', description: 'Fresh squeezed orange juice', stock: 20, deliveryTime: '16 mins', rating: 4.8, reviews: 91 }
+  { id: '1', name: 'Fresh Milk', price: 3.99, image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop', category: 'Dairy', description: 'Fresh organic milk from local farms', stock: 50, deliveryTime: '15 mins', rating: 4.8, reviews: 124 },
+  { id: '2', name: 'Brown Bread', price: 2.49, image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop', category: 'Bakery', description: 'Freshly baked whole wheat bread', stock: 30, deliveryTime: '10 mins', rating: 4.6, reviews: 89 },
+  { id: '3', name: 'Bananas', price: 1.99, image: 'https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=300&fit=crop', category: 'Fruits', description: 'Fresh organic bananas', stock: 75, deliveryTime: '12 mins', rating: 4.7, reviews: 156 },
+  { id: '4', name: 'Greek Yogurt', price: 5.99, image: 'https://images.unsplash.com/photo-1571212515416-01d6ac76d4bf?w=400&h=300&fit=crop', category: 'Dairy', description: 'Creamy Greek yogurt with probiotics', stock: 25, deliveryTime: '18 mins', rating: 4.9, reviews: 203 },
+  { id: '5', name: 'Tomatoes', price: 3.49, image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop', category: 'Vegetables', description: 'Fresh red tomatoes', stock: 40, deliveryTime: '14 mins', rating: 4.5, reviews: 78 },
+  { id: '6', name: 'Orange Juice', price: 4.99, image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop', category: 'Beverages', description: 'Fresh squeezed orange juice', stock: 20, deliveryTime: '16 mins', rating: 4.8, reviews: 91 }
 ];
 
 const demoCustomers = [
