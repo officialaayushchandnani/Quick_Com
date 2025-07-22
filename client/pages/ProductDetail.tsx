@@ -1,99 +1,117 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Label } from '@/components/ui/label';
-import { useCart, Product } from '@/contexts/CartContext';
-import { useAuth } from '@/contexts/AuthContext';
-import { toast } from 'sonner';
-import { 
-  ArrowLeft, 
-  Star, 
-  Clock, 
-  Package, 
-  Truck, 
-  Shield, 
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import { useCart, Product } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
+import {
+  ArrowLeft,
+  Star,
+  Clock,
+  Package,
+  Truck,
+  Shield,
   Plus,
   Minus,
   Heart,
-  Share2
-} from 'lucide-react';
+  Share2,
+} from "lucide-react";
 
 // Demo products data (should match the ones in Index.tsx)
 const demoProducts: Product[] = [
   {
-    id: '1',
-    name: 'Fresh Milk',
+    id: "1",
+    name: "Fresh Milk",
     price: 65,
-    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop',
-    category: 'Dairy',
-    description: 'Fresh organic milk from local farms. Rich in calcium and protein, perfect for your daily nutrition needs.',
+    image:
+      "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop",
+    category: "Dairy",
+    description:
+      "Fresh organic milk from local farms. Rich in calcium and protein, perfect for your daily nutrition needs.",
     stock: 50,
-    deliveryTime: '15 mins',
+    deliveryTime: "15 mins",
     rating: 4.8,
-    reviews: 124
+    reviews: 124,
   },
   {
-    id: '2',
-    name: 'Brown Bread',
+    id: "2",
+    name: "Brown Bread",
     price: 45,
-    image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop',
-    category: 'Bakery',
-    description: 'Freshly baked whole wheat bread. Made with premium ingredients and baked fresh daily.',
+    image:
+      "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop",
+    category: "Bakery",
+    description:
+      "Freshly baked whole wheat bread. Made with premium ingredients and baked fresh daily.",
     stock: 30,
-    deliveryTime: '10 mins',
+    deliveryTime: "10 mins",
     rating: 4.6,
-    reviews: 89
+    reviews: 89,
   },
   {
-    id: '3',
-    name: 'Bananas',
+    id: "3",
+    name: "Bananas",
     price: 80,
-    image: 'https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=300&fit=crop',
-    category: 'Fruits',
-    description: 'Fresh organic bananas. High in potassium and natural sugars, perfect for a healthy snack.',
+    image:
+      "https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=300&fit=crop",
+    category: "Fruits",
+    description:
+      "Fresh organic bananas. High in potassium and natural sugars, perfect for a healthy snack.",
     stock: 75,
-    deliveryTime: '12 mins',
+    deliveryTime: "12 mins",
     rating: 4.7,
-    reviews: 156
+    reviews: 156,
   },
   {
-    id: '4',
-    name: 'Greek Yogurt',
+    id: "4",
+    name: "Greek Yogurt",
     price: 150,
-    image: 'https://images.unsplash.com/photo-1571212515416-01d6ac76d4bf?w=400&h=300&fit=crop',
-    category: 'Dairy',
-    description: 'Creamy Greek yogurt with probiotics. Packed with protein and beneficial bacteria for digestive health.',
+    image:
+      "https://images.unsplash.com/photo-1571212515416-01d6ac76d4bf?w=400&h=300&fit=crop",
+    category: "Dairy",
+    description:
+      "Creamy Greek yogurt with probiotics. Packed with protein and beneficial bacteria for digestive health.",
     stock: 25,
-    deliveryTime: '18 mins',
+    deliveryTime: "18 mins",
     rating: 4.9,
-    reviews: 203
+    reviews: 203,
   },
   {
-    id: '5',
-    name: 'Tomatoes',
+    id: "5",
+    name: "Tomatoes",
     price: 60,
-    image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop',
-    category: 'Vegetables',
-    description: 'Fresh red tomatoes. Vine-ripened and full of flavor, perfect for cooking and salads.',
+    image:
+      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop",
+    category: "Vegetables",
+    description:
+      "Fresh red tomatoes. Vine-ripened and full of flavor, perfect for cooking and salads.",
     stock: 40,
-    deliveryTime: '14 mins',
+    deliveryTime: "14 mins",
     rating: 4.5,
-    reviews: 78
+    reviews: 78,
   },
   {
-    id: '6',
-    name: 'Orange Juice',
+    id: "6",
+    name: "Orange Juice",
     price: 120,
-    image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop',
-    category: 'Beverages',
-    description: 'Fresh squeezed orange juice. 100% pure orange juice with no added sugars or preservatives.',
+    image:
+      "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop",
+    category: "Beverages",
+    description:
+      "Fresh squeezed orange juice. 100% pure orange juice with no added sugars or preservatives.",
     stock: 20,
-    deliveryTime: '16 mins',
+    deliveryTime: "16 mins",
     rating: 4.8,
-    reviews: 91
-  }
+    reviews: 91,
+  },
 ];
 
 export default function ProductDetail() {
@@ -103,7 +121,7 @@ export default function ProductDetail() {
   const { user } = useAuth();
   const [quantity, setQuantity] = React.useState(1);
 
-  const product = demoProducts.find(p => p.id === id);
+  const product = demoProducts.find((p) => p.id === id);
 
   if (!product) {
     return (
@@ -111,10 +129,12 @@ export default function ProductDetail() {
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>Product Not Found</CardTitle>
-            <CardDescription>The product you're looking for doesn't exist.</CardDescription>
+            <CardDescription>
+              The product you're looking for doesn't exist.
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button onClick={() => navigate('/')}>
+            <Button onClick={() => navigate("/")}>
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Homepage
             </Button>
@@ -126,11 +146,13 @@ export default function ProductDetail() {
 
   const handleAddToCart = () => {
     if (!user) {
-      toast.error('Please sign in to add items to cart');
+      toast.error("Please sign in to add items to cart");
       return;
     }
     addToCart(product, quantity);
-    toast.success(`Added ${quantity} ${product.name}${quantity > 1 ? 's' : ''} to cart!`);
+    toast.success(
+      `Added ${quantity} ${product.name}${quantity > 1 ? "s" : ""} to cart!`,
+    );
   };
 
   const handleQuantityChange = (delta: number) => {
@@ -145,7 +167,11 @@ export default function ProductDetail() {
       {/* Header */}
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4 h-16 flex items-center">
-          <Button variant="ghost" onClick={() => navigate('/')} className="mr-4">
+          <Button
+            variant="ghost"
+            onClick={() => navigate("/")}
+            className="mr-4"
+          >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back
           </Button>
@@ -164,7 +190,7 @@ export default function ProductDetail() {
                 className="w-full h-full object-cover"
               />
             </div>
-            
+
             {/* Action Buttons */}
             <div className="flex gap-2">
               <Button variant="outline" size="sm" className="flex-1">
@@ -186,14 +212,20 @@ export default function ProductDetail() {
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   <span className="font-medium">{product.rating}</span>
-                  <span className="text-muted-foreground">({product.reviews} reviews)</span>
+                  <span className="text-muted-foreground">
+                    ({product.reviews} reviews)
+                  </span>
                 </div>
               </div>
-              
+
               <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-              <p className="text-2xl font-bold text-brand-green mb-4">₹{product.price}</p>
-              
-              <p className="text-muted-foreground mb-6">{product.description}</p>
+              <p className="text-2xl font-bold text-brand-green mb-4">
+                ₹{product.price}
+              </p>
+
+              <p className="text-muted-foreground mb-6">
+                {product.description}
+              </p>
             </div>
 
             {/* Delivery Info */}
@@ -228,7 +260,9 @@ export default function ProductDetail() {
             {/* Quantity Selector */}
             <div className="space-y-4">
               <div>
-                <Label className="text-sm font-medium mb-2 block">Quantity</Label>
+                <Label className="text-sm font-medium mb-2 block">
+                  Quantity
+                </Label>
                 <div className="flex items-center gap-3">
                   <Button
                     variant="outline"
@@ -238,7 +272,9 @@ export default function ProductDetail() {
                   >
                     <Minus className="w-4 h-4" />
                   </Button>
-                  <span className="w-12 text-center font-medium">{quantity}</span>
+                  <span className="w-12 text-center font-medium">
+                    {quantity}
+                  </span>
                   <Button
                     variant="outline"
                     size="sm"
@@ -252,14 +288,16 @@ export default function ProductDetail() {
 
               {/* Add to Cart */}
               <div className="space-y-3">
-                <Button 
-                  className="w-full h-12 text-lg" 
+                <Button
+                  className="w-full h-12 text-lg"
                   onClick={handleAddToCart}
                   disabled={!user}
                 >
-                  {user ? `Add ${quantity} to Cart - ₹${(product.price * quantity).toFixed(2)}` : 'Sign in to Add to Cart'}
+                  {user
+                    ? `Add ${quantity} to Cart - ₹${(product.price * quantity).toFixed(2)}`
+                    : "Sign in to Add to Cart"}
                 </Button>
-                
+
                 {product.stock < 10 && (
                   <p className="text-sm text-orange-600 text-center">
                     Only {product.stock} left in stock!
@@ -271,7 +309,9 @@ export default function ProductDetail() {
             {/* Features */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Why Choose This Product?</CardTitle>
+                <CardTitle className="text-lg">
+                  Why Choose This Product?
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-3">
@@ -302,9 +342,9 @@ export default function ProductDetail() {
                     <Star
                       key={i}
                       className={`w-5 h-5 ${
-                        i < Math.floor(product.rating) 
-                          ? 'fill-yellow-400 text-yellow-400' 
-                          : 'text-gray-300'
+                        i < Math.floor(product.rating)
+                          ? "fill-yellow-400 text-yellow-400"
+                          : "text-gray-300"
                       }`}
                     />
                   ))}
@@ -326,16 +366,21 @@ export default function ProductDetail() {
                           <Star
                             key={j}
                             className={`w-4 h-4 ${
-                              j < (5 - i) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+                              j < 5 - i
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "text-gray-300"
                             }`}
                           />
                         ))}
                       </div>
                     </div>
                     <p className="text-muted-foreground">
-                      {i === 0 && "Great quality product! Fast delivery and exactly as described."}
-                      {i === 1 && "Very fresh and well packaged. Will definitely order again."}
-                      {i === 2 && "Good value for money. Delivery was quick and hassle-free."}
+                      {i === 0 &&
+                        "Great quality product! Fast delivery and exactly as described."}
+                      {i === 1 &&
+                        "Very fresh and well packaged. Will definitely order again."}
+                      {i === 2 &&
+                        "Good value for money. Delivery was quick and hassle-free."}
                     </p>
                   </div>
                 ))}

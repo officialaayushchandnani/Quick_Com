@@ -1,19 +1,25 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { useCart } from '@/contexts/CartContext';
-import { useAuth } from '@/contexts/AuthContext';
-import { 
-  X, 
-  Plus, 
-  Minus, 
-  ShoppingCart, 
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
+import {
+  X,
+  Plus,
+  Minus,
+  ShoppingCart,
   CreditCard,
   MapPin,
   Clock,
-  Truck
-} from 'lucide-react';
+  Truck,
+} from "lucide-react";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -21,12 +27,21 @@ interface CartDrawerProps {
 }
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
-  const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems, clearCart } = useCart();
+  const {
+    items,
+    updateQuantity,
+    removeFromCart,
+    getTotalPrice,
+    getTotalItems,
+    clearCart,
+  } = useCart();
   const { user } = useAuth();
 
   const handleCheckout = () => {
     // TODO: Implement real checkout process
-    alert('Checkout functionality will be implemented with payment processing!');
+    alert(
+      "Checkout functionality will be implemented with payment processing!",
+    );
     clearCart();
     onClose();
   };
@@ -40,9 +55,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
           <h2 className="text-xl font-semibold flex items-center gap-2">
             <ShoppingCart className="w-5 h-5" />
             Shopping Cart
-            {getTotalItems() > 0 && (
-              <Badge>{getTotalItems()}</Badge>
-            )}
+            {getTotalItems() > 0 && <Badge>{getTotalItems()}</Badge>}
           </h2>
           <Button variant="ghost" size="sm" onClick={onClose}>
             <X className="w-5 h-5" />
@@ -54,10 +67,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
             <div className="text-center py-12">
               <ShoppingCart className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-2">Your cart is empty</h3>
-              <p className="text-muted-foreground mb-4">Add some products to get started!</p>
-              <Button onClick={onClose}>
-                Continue Shopping
-              </Button>
+              <p className="text-muted-foreground mb-4">
+                Add some products to get started!
+              </p>
+              <Button onClick={onClose}>Continue Shopping</Button>
             </div>
           ) : (
             <>
@@ -88,16 +101,28 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                               <Button
                                 size="sm"
                                 variant="outline"
-                                onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                                onClick={() =>
+                                  updateQuantity(
+                                    item.product.id,
+                                    item.quantity - 1,
+                                  )
+                                }
                                 className="w-8 h-8 p-0"
                               >
                                 <Minus className="w-3 h-3" />
                               </Button>
-                              <span className="w-8 text-center">{item.quantity}</span>
+                              <span className="w-8 text-center">
+                                {item.quantity}
+                              </span>
                               <Button
                                 size="sm"
                                 variant="outline"
-                                onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                                onClick={() =>
+                                  updateQuantity(
+                                    item.product.id,
+                                    item.quantity + 1,
+                                  )
+                                }
                                 className="w-8 h-8 p-0"
                               >
                                 <Plus className="w-3 h-3" />
@@ -105,7 +130,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                             </div>
                             <div className="text-right">
                               <p className="font-semibold">
-                                ${(item.product.price * item.quantity).toFixed(2)}
+                                $
+                                {(item.product.price * item.quantity).toFixed(
+                                  2,
+                                )}
                               </p>
                               <Button
                                 size="sm"
@@ -140,7 +168,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-sm">Expected delivery: 15-25 mins</span>
+                      <span className="text-sm">
+                        Expected delivery: 15-25 mins
+                      </span>
                     </div>
                     <div className="text-xs text-muted-foreground">
                       Free delivery on orders over ₹500
@@ -162,7 +192,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                     </div>
                     <div className="flex justify-between">
                       <span>Delivery Fee</span>
-                      <span>{getTotalPrice() >= 500 ? 'Free' : '₹40'}</span>
+                      <span>{getTotalPrice() >= 500 ? "Free" : "₹40"}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Tax</span>
@@ -171,7 +201,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                     <div className="border-t pt-2 flex justify-between font-semibold text-lg">
                       <span>Total</span>
                       <span>
-                        ₹{(getTotalPrice() + (getTotalPrice() >= 500 ? 0 : 40) + getTotalPrice() * 0.18).toFixed(0)}
+                        ₹
+                        {(
+                          getTotalPrice() +
+                          (getTotalPrice() >= 500 ? 0 : 40) +
+                          getTotalPrice() * 0.18
+                        ).toFixed(0)}
                       </span>
                     </div>
                   </div>
