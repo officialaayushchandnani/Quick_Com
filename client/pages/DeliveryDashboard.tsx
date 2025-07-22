@@ -188,35 +188,43 @@ export default function DeliveryDashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {Array.from({ length: 3 }, (_, i) => (
-                  <div key={i} className="border rounded-lg p-4">
+                {activeDeliveries.map((delivery, i) => (
+                  <div key={delivery.id} className="border rounded-lg p-4">
                     <div className="flex justify-between items-start mb-3">
                       <div>
-                        <h4 className="font-semibold">Order #{2000 + i}</h4>
-                        <p className="text-sm text-muted-foreground">Customer: John D.</p>
+                        <h4 className="font-semibold">{delivery.id}</h4>
+                        <p className="text-sm text-muted-foreground">Customer: {delivery.customer.name}</p>
                       </div>
-                      <Badge variant={i === 0 ? "default" : "secondary"}>
-                        {i === 0 ? "In Transit" : "Assigned"}
+                      <Badge variant={delivery.status === "In Transit" ? "default" : "secondary"}>
+                        {delivery.status}
                       </Badge>
                     </div>
-                    
+
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-sm">123 Main St, Downtown</span>
+                      <span className="text-sm">{delivery.customer.address}</span>
                     </div>
-                    
-                    <div className="flex items-center gap-2 mb-3">
+
+                    <div className="flex items-center gap-2 mb-2">
                       <Clock className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-sm">ETA: {15 + i * 5} minutes</span>
+                      <span className="text-sm">ETA: {delivery.estimatedTime}</span>
                     </div>
-                    
+
+                    <div className="flex items-center gap-2 mb-3">
+                      <Package className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm">{delivery.items.join(', ')}</span>
+                    </div>
+
                     <div className="flex gap-2">
-                      <Button size="sm" className="flex-1">
+                      <Button size="sm" className="flex-1" onClick={() => handleNavigate(delivery)}>
                         <Navigation className="w-4 h-4 mr-2" />
                         Navigate
                       </Button>
-                      <Button size="sm" variant="outline">
+                      <Button size="sm" variant="outline" onClick={() => handleCallCustomer(delivery.customer.phone)}>
                         <Phone className="w-4 h-4" />
+                      </Button>
+                      <Button size="sm" variant="outline" onClick={() => handleViewCustomerDetails(delivery)}>
+                        <User className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
