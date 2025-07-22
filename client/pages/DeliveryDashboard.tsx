@@ -273,6 +273,96 @@ export default function DeliveryDashboard() {
           </Button>
         </div>
       </div>
+
+      {/* Customer Details Dialog */}
+      {selectedDelivery && (
+        <Dialog open={showCustomerDetails} onOpenChange={setShowCustomerDetails}>
+          <DialogContent className="max-w-md">
+            <DialogHeader>
+              <DialogTitle>Customer Details - {selectedDelivery.id}</DialogTitle>
+              <DialogDescription>
+                Complete customer information for this delivery
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                <User className="w-5 h-5 text-brand-green" />
+                <div>
+                  <p className="font-medium">{selectedDelivery.customer.name}</p>
+                  <p className="text-sm text-muted-foreground">Customer</p>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-sm">{selectedDelivery.customer.phone}</span>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleCallCustomer(selectedDelivery.customer.phone)}
+                    className="ml-auto"
+                  >
+                    Call
+                  </Button>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-sm">{selectedDelivery.customer.email}</span>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Home className="w-4 h-4 text-muted-foreground mt-0.5" />
+                  <span className="text-sm">{selectedDelivery.customer.address}</span>
+                </div>
+              </div>
+
+              <div className="border-t pt-4">
+                <h4 className="font-medium mb-2">Order Details</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-sm">Items:</span>
+                    <span className="text-sm font-medium">{selectedDelivery.items.join(', ')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Amount:</span>
+                    <span className="text-sm font-medium">₹{selectedDelivery.amount}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Status:</span>
+                    <Badge variant={selectedDelivery.status === "In Transit" ? "default" : "secondary"}>
+                      {selectedDelivery.status}
+                    </Badge>
+                  </div>
+                  {selectedDelivery.specialInstructions && (
+                    <div className="pt-2 border-t">
+                      <p className="text-sm font-medium">Special Instructions:</p>
+                      <p className="text-sm text-muted-foreground">{selectedDelivery.specialInstructions}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex gap-2 pt-4">
+                <Button
+                  className="flex-1"
+                  onClick={() => handleNavigate(selectedDelivery)}
+                >
+                  <Navigation className="w-4 h-4 mr-2" />
+                  Navigate to Customer
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowCustomerDetails(false)}
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }
