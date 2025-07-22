@@ -32,7 +32,7 @@ const demoProducts: Product[] = [
   {
     id: '1',
     name: 'Fresh Milk',
-    price: 3.99,
+    price: 65,
     image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop',
     category: 'Dairy',
     description: 'Fresh organic milk from local farms',
@@ -44,7 +44,7 @@ const demoProducts: Product[] = [
   {
     id: '2',
     name: 'Brown Bread',
-    price: 2.49,
+    price: 45,
     image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop',
     category: 'Bakery',
     description: 'Freshly baked whole wheat bread',
@@ -56,7 +56,7 @@ const demoProducts: Product[] = [
   {
     id: '3',
     name: 'Bananas',
-    price: 1.99,
+    price: 80,
     image: 'https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=300&fit=crop',
     category: 'Fruits',
     description: 'Fresh organic bananas',
@@ -68,7 +68,7 @@ const demoProducts: Product[] = [
   {
     id: '4',
     name: 'Greek Yogurt',
-    price: 5.99,
+    price: 150,
     image: 'https://images.unsplash.com/photo-1571212515416-01d6ac76d4bf?w=400&h=300&fit=crop',
     category: 'Dairy',
     description: 'Creamy Greek yogurt with probiotics',
@@ -80,7 +80,7 @@ const demoProducts: Product[] = [
   {
     id: '5',
     name: 'Tomatoes',
-    price: 3.49,
+    price: 60,
     image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop',
     category: 'Vegetables',
     description: 'Fresh red tomatoes',
@@ -92,7 +92,7 @@ const demoProducts: Product[] = [
   {
     id: '6',
     name: 'Orange Juice',
-    price: 4.99,
+    price: 120,
     image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop',
     category: 'Beverages',
     description: 'Fresh squeezed orange juice',
