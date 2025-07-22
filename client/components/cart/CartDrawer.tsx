@@ -162,16 +162,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                     </div>
                     <div className="flex justify-between">
                       <span>Delivery Fee</span>
-                      <span>{getTotalPrice() >= 25 ? 'Free' : '$2.99'}</span>
+                      <span>{getTotalPrice() >= 500 ? 'Free' : '₹40'}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Tax</span>
-                      <span>${(getTotalPrice() * 0.08).toFixed(2)}</span>
+                      <span>₹{(getTotalPrice() * 0.18).toFixed(0)}</span>
                     </div>
                     <div className="border-t pt-2 flex justify-between font-semibold text-lg">
                       <span>Total</span>
                       <span>
-                        ${(getTotalPrice() + (getTotalPrice() >= 25 ? 0 : 2.99) + getTotalPrice() * 0.08).toFixed(2)}
+                        ₹{(getTotalPrice() + (getTotalPrice() >= 500 ? 0 : 40) + getTotalPrice() * 0.18).toFixed(0)}
                       </span>
                     </div>
                   </div>
