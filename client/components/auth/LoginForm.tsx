@@ -206,6 +206,21 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
                   />
                 </div>
                 <div className="space-y-2">
+                  <Label htmlFor="reg-address">Address</Label>
+                  <Input
+                    id="reg-address"
+                    placeholder="Enter your complete address"
+                    value={registerData.address}
+                    onChange={(e) =>
+                      setRegisterData((prev) => ({
+                        ...prev,
+                        address: e.target.value,
+                      }))
+                    }
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
                   <Label htmlFor="role">Account Type</Label>
                   <Select
                     value={registerData.role}
