@@ -108,6 +108,7 @@ const categories = ['All', 'Fruits', 'Vegetables', 'Dairy', 'Bakery', 'Beverages
 export default function Index() {
   const { user, logout } = useAuth();
   const { addToCart, getTotalItems } = useCart();
+  const navigate = useNavigate();
   const [showLogin, setShowLogin] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
