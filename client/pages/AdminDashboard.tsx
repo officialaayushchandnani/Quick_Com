@@ -67,12 +67,16 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
   const [isAddZoneOpen, setIsAddZoneOpen] = useState(false);
+  const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [categories, setCategories] = useState(['All', 'Fruits', 'Vegetables', 'Dairy', 'Bakery', 'Beverages', 'Snacks']);
+  const [newCategoryName, setNewCategoryName] = useState('');
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const [newProduct, setNewProduct] = useState({
-    name: '', price: '', category: '', description: '', stock: '', deliveryTime: ''
+    name: '', price: '', category: '', description: '', stock: '', deliveryTime: '', image: ''
   });
 
   const [newZone, setNewZone] = useState({
