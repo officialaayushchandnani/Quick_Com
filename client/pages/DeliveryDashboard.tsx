@@ -1,0 +1,176 @@
+import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { useAuth } from '@/contexts/AuthContext';
+import { 
+  MapPin, 
+  Clock, 
+  Package, 
+  Navigation,
+  CheckCircle,
+  DollarSign,
+  Route,
+  Phone
+} from 'lucide-react';
+
+export default function DeliveryDashboard() {
+  const { user, logout } = useAuth();
+
+  if (!user || user.role !== 'delivery_agent') {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Access Denied</CardTitle>
+            <CardDescription>You need delivery agent credentials to access this page.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button onClick={() => window.location.href = '/'}>
+              Go to Homepage
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <header className="border-b">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <h1 className="text-xl font-bold">Delivery Agent - QuickDash AI</h1>
+          <div className="flex items-center gap-4">
+            <Badge variant="outline" className="text-green-600 border-green-600">
+              Online
+            </Badge>
+            <span className="text-sm text-muted-foreground">Welcome, {user.name}</span>
+            <Button variant="outline" onClick={logout}>Logout</Button>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Today's Deliveries</CardTitle>
+              <Package className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">12</div>
+              <p className="text-xs text-muted-foreground">8 completed, 4 pending</p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Today's Earnings</CardTitle>
+              <DollarSign className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">$156</div>
+              <p className="text-xs text-muted-foreground">+$28 from yesterday</p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Average Time</CardTitle>
+              <Clock className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">18 min</div>
+              <p className="text-xs text-muted-foreground">2 min faster than avg</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Active Deliveries</CardTitle>
+              <CardDescription>Your current delivery assignments</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {Array.from({ length: 3 }, (_, i) => (
+                  <div key={i} className="border rounded-lg p-4">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h4 className="font-semibold">Order #{2000 + i}</h4>
+                        <p className="text-sm text-muted-foreground">Customer: John D.</p>
+                      </div>
+                      <Badge variant={i === 0 ? "default" : "secondary"}>
+                        {i === 0 ? "In Transit" : "Assigned"}
+                      </Badge>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm">123 Main St, Downtown</span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-3">
+                      <Clock className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm">ETA: {15 + i * 5} minutes</span>
+                    </div>
+                    
+                    <div className="flex gap-2">
+                      <Button size="sm" className="flex-1">
+                        <Navigation className="w-4 h-4 mr-2" />
+                        Navigate
+                      </Button>
+                      <Button size="sm" variant="outline">
+                        <Phone className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Recent Completions</CardTitle>
+              <CardDescription>Your recently completed deliveries</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <div key={i} className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <div>
+                        <p className="font-medium">Order #{1900 + i}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {new Date(Date.now() - (i + 1) * 3600000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-medium">${(Math.random() * 8 + 5).toFixed(2)}</p>
+                      <p className="text-sm text-muted-foreground">{12 + i} min</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-8 text-center p-8 bg-muted/50 rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">Delivery Agent Portal - Coming Soon</h3>
+          <p className="text-muted-foreground mb-4">
+            Full delivery management including real-time GPS navigation, order status updates, 
+            customer communication, earnings tracking, and route optimization will be available here.
+          </p>
+          <Button onClick={() => window.location.href = '/'}>
+            Return to Homepage
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
