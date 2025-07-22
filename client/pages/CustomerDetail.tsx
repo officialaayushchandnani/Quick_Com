@@ -21,92 +21,92 @@ import {
 
 // Demo customer data
 const demoCustomers = [
-  { 
-    id: '1', 
-    name: 'John Smith', 
-    email: 'john@email.com', 
-    phone: '+91 98765 43210', 
-    orders: 24, 
-    totalSpent: 1250, 
-    joinDate: '2024-01-15', 
+  {
+    id: '1',
+    name: 'John Smith',
+    email: 'john@email.com',
+    phone: '+91 98765 43210',
+    orders: 24,
+    totalSpent: 3250,
+    joinDate: '2024-01-15',
     status: 'Active',
     address: '123 Main Street, Satellite, Ahmedabad, Gujarat 380015',
     lastOrder: '2024-03-15',
     favoriteCategory: 'Dairy',
     recentOrders: [
-      { id: 'ORD001', date: '2024-03-15', amount: 45.50, status: 'Delivered' },
-      { id: 'ORD002', date: '2024-03-10', amount: 32.80, status: 'Delivered' },
-      { id: 'ORD003', date: '2024-03-05', amount: 67.20, status: 'Delivered' }
+      { id: 'ORD001', date: '2024-03-15', amount: 145, status: 'Delivered' },
+      { id: 'ORD002', date: '2024-03-10', amount: 280, status: 'Delivered' },
+      { id: 'ORD003', date: '2024-03-05', amount: 320, status: 'Delivered' }
     ]
   },
-  { 
-    id: '2', 
-    name: 'Priya Patel', 
-    email: 'priya@email.com', 
-    phone: '+91 98765 43211', 
-    orders: 18, 
-    totalSpent: 890, 
-    joinDate: '2024-02-20', 
+  {
+    id: '2',
+    name: 'Priya Patel',
+    email: 'priya@email.com',
+    phone: '+91 98765 43211',
+    orders: 18,
+    totalSpent: 2890,
+    joinDate: '2024-02-20',
     status: 'Active',
     address: '456 Park Avenue, Vastrapur, Ahmedabad, Gujarat 380058',
     lastOrder: '2024-03-12',
     favoriteCategory: 'Fruits',
     recentOrders: [
-      { id: 'ORD004', date: '2024-03-12', amount: 28.90, status: 'Delivered' },
-      { id: 'ORD005', date: '2024-03-08', amount: 55.60, status: 'Delivered' }
+      { id: 'ORD004', date: '2024-03-12', amount: 160, status: 'Delivered' },
+      { id: 'ORD005', date: '2024-03-08', amount: 240, status: 'Delivered' }
     ]
   },
-  { 
-    id: '3', 
-    name: 'Raj Kumar', 
-    email: 'raj@email.com', 
-    phone: '+91 98765 43212', 
-    orders: 31, 
-    totalSpent: 1680, 
-    joinDate: '2023-11-10', 
+  {
+    id: '3',
+    name: 'Raj Kumar',
+    email: 'raj@email.com',
+    phone: '+91 98765 43212',
+    orders: 31,
+    totalSpent: 4680,
+    joinDate: '2023-11-10',
     status: 'Active',
     address: '789 CG Road, Navrangpura, Ahmedabad, Gujarat 380009',
     lastOrder: '2024-03-14',
     favoriteCategory: 'Vegetables',
     recentOrders: [
-      { id: 'ORD006', date: '2024-03-14', amount: 78.40, status: 'Delivered' },
-      { id: 'ORD007', date: '2024-03-11', amount: 42.30, status: 'Delivered' },
-      { id: 'ORD008', date: '2024-03-07', amount: 95.20, status: 'Delivered' }
+      { id: 'ORD006', date: '2024-03-14', amount: 180, status: 'Delivered' },
+      { id: 'ORD007', date: '2024-03-11', amount: 230, status: 'Delivered' },
+      { id: 'ORD008', date: '2024-03-07', amount: 420, status: 'Delivered' }
     ]
   },
-  { 
-    id: '4', 
-    name: 'Sarah Johnson', 
-    email: 'sarah@email.com', 
-    phone: '+91 98765 43213', 
-    orders: 12, 
-    totalSpent: 540, 
-    joinDate: '2024-03-05', 
+  {
+    id: '4',
+    name: 'Sarah Johnson',
+    email: 'sarah@email.com',
+    phone: '+91 98765 43213',
+    orders: 12,
+    totalSpent: 1540,
+    joinDate: '2024-03-05',
     status: 'Active',
     address: '321 SG Highway, Makarba, Ahmedabad, Gujarat 380051',
     lastOrder: '2024-03-13',
     favoriteCategory: 'Bakery',
     recentOrders: [
-      { id: 'ORD009', date: '2024-03-13', amount: 25.70, status: 'Delivered' },
-      { id: 'ORD010', date: '2024-03-09', amount: 38.90, status: 'Delivered' }
+      { id: 'ORD009', date: '2024-03-13', amount: 125, status: 'Delivered' },
+      { id: 'ORD010', date: '2024-03-09', amount: 190, status: 'Delivered' }
     ]
   },
-  { 
-    id: '5', 
-    name: 'Amit Shah', 
-    email: 'amit@email.com', 
-    phone: '+91 98765 43214', 
-    orders: 45, 
-    totalSpent: 2340, 
-    joinDate: '2023-09-22', 
+  {
+    id: '5',
+    name: 'Amit Shah',
+    email: 'amit@email.com',
+    phone: '+91 98765 43214',
+    orders: 45,
+    totalSpent: 8940,
+    joinDate: '2023-09-22',
     status: 'VIP',
     address: '654 Prahlad Nagar, Satellite, Ahmedabad, Gujarat 380015',
     lastOrder: '2024-03-16',
     favoriteCategory: 'Beverages',
     recentOrders: [
-      { id: 'ORD011', date: '2024-03-16', amount: 125.80, status: 'Delivered' },
-      { id: 'ORD012', date: '2024-03-13', amount: 89.40, status: 'Delivered' },
-      { id: 'ORD013', date: '2024-03-10', amount: 156.30, status: 'Delivered' }
+      { id: 'ORD011', date: '2024-03-16', amount: 380, status: 'Delivered' },
+      { id: 'ORD012', date: '2024-03-13', amount: 210, status: 'Delivered' },
+      { id: 'ORD013', date: '2024-03-10', amount: 450, status: 'Delivered' }
     ]
   }
 ];
