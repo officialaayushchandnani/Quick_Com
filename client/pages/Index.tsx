@@ -108,6 +108,7 @@ export default function Index() {
   const { user, logout } = useAuth();
   const { addToCart, getTotalItems } = useCart();
   const [showLogin, setShowLogin] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [filteredProducts, setFilteredProducts] = useState(demoProducts);
