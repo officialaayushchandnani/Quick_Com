@@ -31,7 +31,9 @@ import {
   Mail,
   Calendar,
   DollarSign,
-  Star
+  Star,
+  Upload,
+  Image as ImageIcon
 } from 'lucide-react';
 
 // Demo data
@@ -120,7 +122,7 @@ export default function AdminDashboard() {
       toast.error('Please enter a category name');
       return;
     }
-
+    
     if (categories.includes(newCategoryName)) {
       toast.error('Category already exists');
       return;
@@ -309,94 +311,161 @@ export default function AdminDashboard() {
           <TabsContent value="products" className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold">Product Management</h2>
-              <Dialog open={isAddProductOpen} onOpenChange={setIsAddProductOpen}>
-                <DialogTrigger asChild>
-                  <Button>
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add Product
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Add New Product</DialogTitle>
-                    <DialogDescription>Fill in the product details below.</DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="name">Product Name *</Label>
-                      <Input
-                        id="name"
-                        value={newProduct.name}
-                        onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
-                        placeholder="Enter product name"
-                      />
+              <div className="flex gap-2">
+                <Dialog open={isAddCategoryOpen} onOpenChange={setIsAddCategoryOpen}>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Category
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-sm">
+                    <DialogHeader>
+                      <DialogTitle>Add New Category</DialogTitle>
+                      <DialogDescription>Create a new product category</DialogDescription>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="category-name">Category Name *</Label>
+                        <Input
+                          id="category-name"
+                          value={newCategoryName}
+                          onChange={(e) => setNewCategoryName(e.target.value)}
+                          placeholder="e.g., Organic Foods"
+                        />
+                      </div>
+                      <div className="flex gap-2">
+                        <Button onClick={handleAddCategory} className="flex-1">
+                          Add Category
+                        </Button>
+                        <Button variant="outline" onClick={() => setIsAddCategoryOpen(false)}>
+                          Cancel
+                        </Button>
+                      </div>
                     </div>
-                    <div>
-                      <Label htmlFor="price">Price (₹) *</Label>
-                      <Input
-                        id="price"
-                        type="number"
-                        step="0.01"
-                        value={newProduct.price}
-                        onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
-                        placeholder="0.00"
-                      />
+                  </DialogContent>
+                </Dialog>
+                
+                <Dialog open={isAddProductOpen} onOpenChange={setIsAddProductOpen}>
+                  <DialogTrigger asChild>
+                    <Button>
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Product
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>Add New Product</DialogTitle>
+                      <DialogDescription>Fill in the product details below.</DialogDescription>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="name">Product Name *</Label>
+                        <Input
+                          id="name"
+                          value={newProduct.name}
+                          onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
+                          placeholder="Enter product name"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="price">Price (₹) *</Label>
+                        <Input
+                          id="price"
+                          type="number"
+                          step="0.01"
+                          value={newProduct.price}
+                          onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
+                          placeholder="0.00"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="category">Category *</Label>
+                        <Select value={newProduct.category} onValueChange={(value) => setNewProduct({...newProduct, category: value})}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {availableCategories.map((category) => (
+                              <SelectItem key={category} value={category}>{category}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label htmlFor="image">Product Image</Label>
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <Input
+                              id="image"
+                              type="file"
+                              accept="image/*"
+                              onChange={handleImageUpload}
+                              disabled={uploadingImage}
+                              className="hidden"
+                            />
+                            <Button
+                              type="button"
+                              variant="outline"
+                              onClick={() => document.getElementById('image')?.click()}
+                              disabled={uploadingImage}
+                              className="w-full"
+                            >
+                              <Upload className="w-4 h-4 mr-2" />
+                              {uploadingImage ? 'Uploading...' : 'Upload Image'}
+                            </Button>
+                          </div>
+                          {newProduct.image && (
+                            <div className="mt-2">
+                              <img
+                                src={newProduct.image}
+                                alt="Preview"
+                                className="w-20 h-20 object-cover rounded-lg border"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div>
+                        <Label htmlFor="stock">Stock Quantity</Label>
+                        <Input
+                          id="stock"
+                          type="number"
+                          value={newProduct.stock}
+                          onChange={(e) => setNewProduct({...newProduct, stock: e.target.value})}
+                          placeholder="0"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="deliveryTime">Delivery Time</Label>
+                        <Input
+                          id="deliveryTime"
+                          value={newProduct.deliveryTime}
+                          onChange={(e) => setNewProduct({...newProduct, deliveryTime: e.target.value})}
+                          placeholder="15 mins"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="description">Description</Label>
+                        <Textarea
+                          id="description"
+                          value={newProduct.description}
+                          onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
+                          placeholder="Product description..."
+                        />
+                      </div>
+                      <div className="flex gap-2">
+                        <Button onClick={handleAddProduct} className="flex-1">
+                          Add Product
+                        </Button>
+                        <Button variant="outline" onClick={() => setIsAddProductOpen(false)}>
+                          Cancel
+                        </Button>
+                      </div>
                     </div>
-                    <div>
-                      <Label htmlFor="category">Category *</Label>
-                      <Select value={newProduct.category} onValueChange={(value) => setNewProduct({...newProduct, category: value})}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select category" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Fruits">Fruits</SelectItem>
-                          <SelectItem value="Vegetables">Vegetables</SelectItem>
-                          <SelectItem value="Dairy">Dairy</SelectItem>
-                          <SelectItem value="Bakery">Bakery</SelectItem>
-                          <SelectItem value="Beverages">Beverages</SelectItem>
-                          <SelectItem value="Snacks">Snacks</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Label htmlFor="stock">Stock Quantity</Label>
-                      <Input
-                        id="stock"
-                        type="number"
-                        value={newProduct.stock}
-                        onChange={(e) => setNewProduct({...newProduct, stock: e.target.value})}
-                        placeholder="0"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="deliveryTime">Delivery Time</Label>
-                      <Input
-                        id="deliveryTime"
-                        value={newProduct.deliveryTime}
-                        onChange={(e) => setNewProduct({...newProduct, deliveryTime: e.target.value})}
-                        placeholder="15 mins"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="description">Description</Label>
-                      <Textarea
-                        id="description"
-                        value={newProduct.description}
-                        onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
-                        placeholder="Product description..."
-                      />
-                    </div>
-                    <div className="flex gap-2">
-                      <Button onClick={handleAddProduct} className="flex-1">
-                        Add Product
-                      </Button>
-                      <Button variant="outline" onClick={() => setIsAddProductOpen(false)}>
-                        Cancel
-                      </Button>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
 
             {/* Product Filters */}
@@ -451,6 +520,13 @@ export default function AdminDashboard() {
                     </div>
                   </CardHeader>
                   <CardContent>
+                    <div className="mb-4">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-32 object-cover rounded-lg"
+                      />
+                    </div>
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span>Price:</span>
