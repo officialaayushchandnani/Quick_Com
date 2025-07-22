@@ -11,6 +11,8 @@ import { CartProvider } from "./contexts/CartContext";
 import Index from "./pages/Index";
 import AdminDashboard from "./pages/AdminDashboard";
 import DeliveryDashboard from "./pages/DeliveryDashboard";
+import ProductDetail from "./pages/ProductDetail";
+import CustomerDetail from "./pages/CustomerDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
