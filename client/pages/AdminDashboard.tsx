@@ -107,7 +107,7 @@ export default function AdminDashboard() {
       id: Date.now().toString(),
       name: newProduct.name,
       price: parseFloat(newProduct.price),
-      image: '/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
       category: newProduct.category,
       description: newProduct.description,
       stock: parseInt(newProduct.stock) || 0,
