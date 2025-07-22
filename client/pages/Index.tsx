@@ -158,7 +158,7 @@ export default function Index() {
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="w-4 h-4" />
-              <span>Delivering to Downtown</span>
+              <span>Delivering to Ahmedabad</span>
             </div>
             
             {user ? (
