@@ -67,7 +67,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           email: "customer@demo.com",
           password: "demo123",
           role: "customer",
-          phone: "+1234567890",
+          phone: "+91 98765 43210",
+          address: "123 Main Street, Satellite, Ahmedabad, Gujarat 380015",
         },
         {
           id: "2",
@@ -75,7 +76,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           email: "agent@demo.com",
           password: "demo123",
           role: "delivery_agent",
-          phone: "+1234567891",
+          phone: "+91 98765 43211",
+          address: "456 Agent Colony, Vastrapur, Ahmedabad, Gujarat 380058",
         },
         {
           id: "3",
@@ -83,7 +85,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           email: "admin@demo.com",
           password: "demo123",
           role: "admin",
-          phone: "+1234567892",
+          phone: "+91 98765 43212",
+          address: "789 Admin Tower, CG Road, Ahmedabad, Gujarat 380009",
         },
       ];
 
