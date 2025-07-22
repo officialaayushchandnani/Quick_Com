@@ -32,7 +32,7 @@ const activeDeliveries = [
       coordinates: { lat: 23.0396, lng: 72.5662 }
     },
     items: ['Fresh Milk', 'Brown Bread', 'Bananas'],
-    amount: 125.50,
+    amount: 190,
     status: 'In Transit',
     estimatedTime: '15 mins',
     specialInstructions: 'Ring the doorbell twice'
