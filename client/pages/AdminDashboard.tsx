@@ -101,6 +101,37 @@ export default function AdminDashboard() {
     );
   }
 
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setUploadingImage(true);
+      // Simulate image upload with a delay
+      setTimeout(() => {
+        const imageUrl = URL.createObjectURL(file);
+        setNewProduct({ ...newProduct, image: imageUrl });
+        setUploadingImage(false);
+        toast.success('Image uploaded successfully!');
+      }, 1500);
+    }
+  };
+
+  const handleAddCategory = () => {
+    if (!newCategoryName.trim()) {
+      toast.error('Please enter a category name');
+      return;
+    }
+
+    if (categories.includes(newCategoryName)) {
+      toast.error('Category already exists');
+      return;
+    }
+
+    setCategories([...categories, newCategoryName]);
+    setNewCategoryName('');
+    setIsAddCategoryOpen(false);
+    toast.success('Category added successfully!');
+  };
+
   const handleAddProduct = () => {
     if (!newProduct.name || !newProduct.price || !newProduct.category) {
       toast.error('Please fill in all required fields');
@@ -111,7 +142,7 @@ export default function AdminDashboard() {
       id: Date.now().toString(),
       name: newProduct.name,
       price: parseFloat(newProduct.price),
-      image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
+      image: newProduct.image || 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
       category: newProduct.category,
       description: newProduct.description,
       stock: parseInt(newProduct.stock) || 0,
@@ -121,7 +152,7 @@ export default function AdminDashboard() {
     };
 
     setProducts([...products, product]);
-    setNewProduct({ name: '', price: '', category: '', description: '', stock: '', deliveryTime: '' });
+    setNewProduct({ name: '', price: '', category: '', description: '', stock: '', deliveryTime: '', image: '' });
     setIsAddProductOpen(false);
     toast.success('Product added successfully!');
   };
