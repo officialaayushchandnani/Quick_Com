@@ -20,8 +20,59 @@ import {
   ExternalLink
 } from 'lucide-react';
 
+// Demo delivery data
+const activeDeliveries = [
+  {
+    id: 'ORD001',
+    customer: {
+      name: 'John Smith',
+      phone: '+91 98765 43210',
+      email: 'john@email.com',
+      address: '123 Main Street, Satellite, Ahmedabad, Gujarat 380015',
+      coordinates: { lat: 23.0396, lng: 72.5662 }
+    },
+    items: ['Fresh Milk', 'Brown Bread', 'Bananas'],
+    amount: 125.50,
+    status: 'In Transit',
+    estimatedTime: '15 mins',
+    specialInstructions: 'Ring the doorbell twice'
+  },
+  {
+    id: 'ORD002',
+    customer: {
+      name: 'Priya Patel',
+      phone: '+91 98765 43211',
+      email: 'priya@email.com',
+      address: '456 Park Avenue, Vastrapur, Ahmedabad, Gujarat 380058',
+      coordinates: { lat: 23.0403, lng: 72.5323 }
+    },
+    items: ['Greek Yogurt', 'Tomatoes'],
+    amount: 89.40,
+    status: 'Assigned',
+    estimatedTime: '20 mins',
+    specialInstructions: 'Call before delivery'
+  },
+  {
+    id: 'ORD003',
+    customer: {
+      name: 'Raj Kumar',
+      phone: '+91 98765 43212',
+      email: 'raj@email.com',
+      address: '789 CG Road, Navrangpura, Ahmedabad, Gujarat 380009',
+      coordinates: { lat: 23.0325, lng: 72.5581 }
+    },
+    items: ['Orange Juice', 'Fresh Milk'],
+    amount: 67.30,
+    status: 'Assigned',
+    estimatedTime: '25 mins',
+    specialInstructions: 'Leave at gate if no one answers'
+  }
+];
+
 export default function DeliveryDashboard() {
   const { user, logout } = useAuth();
+  const [selectedDelivery, setSelectedDelivery] = useState<any>(null);
+  const [showCustomerDetails, setShowCustomerDetails] = useState(false);
 
   if (!user || user.role !== 'delivery_agent') {
     return (
