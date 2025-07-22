@@ -48,11 +48,11 @@ const demoProducts: Product[] = [
 ];
 
 const demoCustomers = [
-  { id: '1', name: 'John Smith', email: 'john@email.com', phone: '+91 98765 43210', orders: 24, totalSpent: 1250, joinDate: '2024-01-15', status: 'Active' },
-  { id: '2', name: 'Priya Patel', email: 'priya@email.com', phone: '+91 98765 43211', orders: 18, totalSpent: 890, joinDate: '2024-02-20', status: 'Active' },
-  { id: '3', name: 'Raj Kumar', email: 'raj@email.com', phone: '+91 98765 43212', orders: 31, totalSpent: 1680, joinDate: '2023-11-10', status: 'Active' },
-  { id: '4', name: 'Sarah Johnson', email: 'sarah@email.com', phone: '+91 98765 43213', orders: 12, totalSpent: 540, joinDate: '2024-03-05', status: 'Active' },
-  { id: '5', name: 'Amit Shah', email: 'amit@email.com', phone: '+91 98765 43214', orders: 45, totalSpent: 2340, joinDate: '2023-09-22', status: 'VIP' }
+  { id: '1', name: 'John Smith', email: 'john@email.com', phone: '+91 98765 43210', orders: 24, totalSpent: 3250, joinDate: '2024-01-15', status: 'Active' },
+  { id: '2', name: 'Priya Patel', email: 'priya@email.com', phone: '+91 98765 43211', orders: 18, totalSpent: 2890, joinDate: '2024-02-20', status: 'Active' },
+  { id: '3', name: 'Raj Kumar', email: 'raj@email.com', phone: '+91 98765 43212', orders: 31, totalSpent: 4680, joinDate: '2023-11-10', status: 'Active' },
+  { id: '4', name: 'Sarah Johnson', email: 'sarah@email.com', phone: '+91 98765 43213', orders: 12, totalSpent: 1540, joinDate: '2024-03-05', status: 'Active' },
+  { id: '5', name: 'Amit Shah', email: 'amit@email.com', phone: '+91 98765 43214', orders: 45, totalSpent: 8940, joinDate: '2023-09-22', status: 'VIP' }
 ];
 
 const ahmedabadZones = [
