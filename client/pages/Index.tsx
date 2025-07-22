@@ -348,6 +348,9 @@ export default function Index() {
 
       {/* Login Modal */}
       {showLogin && <LoginForm onClose={() => setShowLogin(false)} />}
+
+      {/* Cart Drawer */}
+      <CartDrawer isOpen={showCart} onClose={() => setShowCart(false)} />
     </div>
   );
 }
