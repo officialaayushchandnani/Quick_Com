@@ -74,6 +74,43 @@ export default function DeliveryDashboard() {
   const [selectedDelivery, setSelectedDelivery] = useState<any>(null);
   const [showCustomerDetails, setShowCustomerDetails] = useState(false);
 
+  const handleNavigate = (delivery: any) => {
+    const { address, coordinates } = delivery.customer;
+
+    // Try to open Google Maps with navigation
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coordinates.lat},${coordinates.lng}&travelmode=driving`;
+
+    // Try to open in Google Maps app first, fallback to web
+    const mapsAppUrl = `google.navigation:q=${coordinates.lat},${coordinates.lng}`;
+
+    try {
+      // For mobile devices, try to open the Maps app
+      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href = mapsAppUrl;
+        // Fallback to web version if app doesn't open
+        setTimeout(() => {
+          window.open(googleMapsUrl, '_blank');
+        }, 2000);
+      } else {
+        // For desktop, open in new tab
+        window.open(googleMapsUrl, '_blank');
+      }
+
+      toast.success('Opening navigation to customer location');
+    } catch (error) {
+      toast.error('Could not open navigation. Please use your preferred maps app.');
+    }
+  };
+
+  const handleCallCustomer = (phone: string) => {
+    window.location.href = `tel:${phone}`;
+  };
+
+  const handleViewCustomerDetails = (delivery: any) => {
+    setSelectedDelivery(delivery);
+    setShowCustomerDetails(true);
+  };
+
   if (!user || user.role !== 'delivery_agent') {
     return (
       <div className="min-h-screen flex items-center justify-center">
