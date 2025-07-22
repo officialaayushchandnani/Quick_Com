@@ -153,19 +153,40 @@ export default function Index() {
             
             {user ? (
               <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="relative"
-                  onClick={() => {/* TODO: Open cart */}}
-                >
-                  <ShoppingCart className="w-4 h-4" />
-                  {getTotalItems() > 0 && (
-                    <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 text-xs">
-                      {getTotalItems()}
-                    </Badge>
-                  )}
-                </Button>
+                {user.role === 'customer' && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="relative"
+                    onClick={() => {/* TODO: Open cart */}}
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    {getTotalItems() > 0 && (
+                      <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 text-xs">
+                        {getTotalItems()}
+                      </Badge>
+                    )}
+                  </Button>
+                )}
+
+                {user.role === 'admin' && (
+                  <Button variant="outline" size="sm" asChild>
+                    <Link to="/admin">
+                      <Settings className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Link>
+                  </Button>
+                )}
+
+                {user.role === 'delivery_agent' && (
+                  <Button variant="outline" size="sm" asChild>
+                    <Link to="/delivery">
+                      <Package className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Link>
+                  </Button>
+                )}
+
                 <div className="flex items-center gap-2">
                   <User className="w-4 h-4" />
                   <span className="hidden sm:inline text-sm">{user.name}</span>
