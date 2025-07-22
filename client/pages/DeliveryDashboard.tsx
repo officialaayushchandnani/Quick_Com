@@ -47,7 +47,7 @@ const activeDeliveries = [
       coordinates: { lat: 23.0403, lng: 72.5323 }
     },
     items: ['Greek Yogurt', 'Tomatoes'],
-    amount: 89.40,
+    amount: 210,
     status: 'Assigned',
     estimatedTime: '20 mins',
     specialInstructions: 'Call before delivery'
