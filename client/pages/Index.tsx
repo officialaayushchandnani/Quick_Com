@@ -134,6 +134,13 @@ export default function Index() {
 
   const handleAddToCart = (product: Product) => {
     addToCart(product);
+    toast.success(`${product.name} added to cart!`, {
+      description: `You now have ${getTotalItems() + 1} items in your cart`,
+      action: {
+        label: "View Cart",
+        onClick: () => setShowCart(true),
+      },
+    });
   };
 
   return (
