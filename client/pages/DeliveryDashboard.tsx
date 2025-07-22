@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useAuth } from '@/contexts/AuthContext';
-import { 
-  MapPin, 
-  Clock, 
-  Package, 
+import { toast } from 'sonner';
+import {
+  MapPin,
+  Clock,
+  Package,
   Navigation,
   CheckCircle,
   DollarSign,
   Route,
-  Phone
+  Phone,
+  User,
+  Mail,
+  Home,
+  ExternalLink
 } from 'lucide-react';
 
 export default function DeliveryDashboard() {
