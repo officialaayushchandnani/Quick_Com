@@ -160,7 +160,7 @@ export default function Index() {
                     variant="outline"
                     size="sm"
                     className="relative"
-                    onClick={() => {/* TODO: Open cart */}}
+                    onClick={() => setShowCart(true)}
                   >
                     <ShoppingCart className="w-4 h-4" />
                     {getTotalItems() > 0 && (
