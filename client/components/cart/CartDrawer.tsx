@@ -143,7 +143,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                       <span className="text-sm">Expected delivery: 15-25 mins</span>
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      Free delivery on orders over $25
+                      Free delivery on orders over ₹500
                     </div>
                   </div>
                 </CardContent>
