@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,20 +7,22 @@ import { Badge } from '@/components/ui/badge';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCart, Product } from '@/contexts/CartContext';
-import { 
-  Search, 
-  ShoppingCart, 
-  User, 
-  LogOut, 
-  Clock, 
-  Star, 
-  Zap, 
-  Truck, 
-  Shield, 
+import {
+  Search,
+  ShoppingCart,
+  User,
+  LogOut,
+  Clock,
+  Star,
+  Zap,
+  Truck,
+  Shield,
   MapPin,
   Filter,
   Plus,
-  Heart
+  Heart,
+  Settings,
+  Package
 } from 'lucide-react';
 
 // Demo products
