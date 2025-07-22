@@ -88,7 +88,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                         <div className="flex-1">
                           <h4 className="font-semibold">{item.product.name}</h4>
                           <p className="text-sm text-muted-foreground mb-2">
-                            ${item.product.price.toFixed(2)} each
+                            ₹{item.product.price.toFixed(0)} each
                           </p>
                           <div className="flex items-center gap-2 mb-2">
                             <Clock className="w-3 h-3 text-muted-foreground" />
