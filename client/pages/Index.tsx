@@ -169,6 +169,37 @@ export default function Index() {
     });
   };
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    setShowSearchSuggestions(value.length > 0 && searchInputFocused);
+  };
+
+  const handleSearchFocus = () => {
+    setSearchInputFocused(true);
+    setShowSearchSuggestions(searchQuery.length > 0);
+  };
+
+  const handleSearchBlur = () => {
+    // Delay hiding to allow click on suggestions
+    setTimeout(() => {
+      setSearchInputFocused(false);
+      setShowSearchSuggestions(false);
+    }, 200);
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setSearchQuery(suggestion);
+    setShowSearchSuggestions(false);
+    setSearchInputFocused(false);
+  };
+
+  const handleProductClick = (productId: string) => {
+    setShowSearchSuggestions(false);
+    setSearchInputFocused(false);
+    navigate(`/product/${productId}`);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
