@@ -463,28 +463,23 @@ export default function DeliveryDashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <div key={i} className="flex justify-between items-center">
+                {recentCompletions.map((completion, i) => (
+                  <div key={completion.id} className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600" />
                       <div>
-                        <p className="font-medium">Order #{1900 + i}</p>
+                        <p className="font-medium">{completion.id}</p>
                         <p className="text-sm text-muted-foreground">
-                          {new Date(
-                            Date.now() - (i + 1) * 3600000,
-                          ).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
+                          {completion.date}
                         </p>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className="font-medium">
-                        ${(Math.random() * 8 + 5).toFixed(2)}
+                        ₹{completion.amount}
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        {12 + i} min
+                        {completion.time} min
                       </p>
                     </div>
                   </div>
