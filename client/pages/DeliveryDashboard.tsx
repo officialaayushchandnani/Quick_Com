@@ -557,9 +557,11 @@ export default function DeliveryDashboard() {
                     <span className="text-sm">Status:</span>
                     <Badge
                       variant={
-                        selectedDelivery.status === "In Transit"
-                          ? "default"
-                          : "secondary"
+                        selectedDelivery.status === "Delivered" ? "default" :
+                        selectedDelivery.status === "Picked Up" ? "default" :
+                        selectedDelivery.status === "Accepted" ? "outline" :
+                        selectedDelivery.status === "Rejected" ? "destructive" :
+                        "secondary"
                       }
                     >
                       {selectedDelivery.status}
