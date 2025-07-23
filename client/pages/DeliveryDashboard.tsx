@@ -175,12 +175,30 @@ export default function DeliveryDashboard() {
   };
 
   const handleMarkDelivered = (orderId: string) => {
-    setOrders(orders.map(order =>
-      order.id === orderId
-        ? { ...order, status: 'Delivered' }
-        : order
-    ));
-    toast.success('Order marked as delivered!');
+    const order = orders.find(o => o.id === orderId);
+    if (order) {
+      // Update order status
+      setOrders(orders.map(o =>
+        o.id === orderId
+          ? { ...o, status: 'Delivered', completedAt: new Date() }
+          : o
+      ));
+
+      // Update earnings and delivery count
+      setTodayEarnings(prev => prev + order.expectedEarnings);
+      setCompletedDeliveries(prev => prev + 1);
+
+      // Add to recent completions
+      const newCompletion = {
+        id: order.id,
+        date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        amount: order.expectedEarnings,
+        time: Math.floor(Math.random() * 10 + 10).toString() // Random delivery time for demo
+      };
+      setRecentCompletions(prev => [newCompletion, ...prev.slice(0, 4)]);
+
+      toast.success(`Order delivered! Earned ₹${order.expectedEarnings}`);
+    }
   };
 
   if (!user || user.role !== "delivery_agent") {
