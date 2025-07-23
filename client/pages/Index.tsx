@@ -172,8 +172,12 @@ export default function Index() {
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-brand-green rounded-lg flex items-center justify-center">
-              <Zap className="w-5 h-5 text-white" />
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F08edbdb598d64e88bcad23a8860c8009%2F954b821c8ac440c3a2b7b73ae90df210?format=webp&width=800"
+                alt="QuickDash AI Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <h1 className="text-xl font-bold">QuickDash AI</h1>
           </div>
