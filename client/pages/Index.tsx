@@ -247,7 +247,7 @@ export default function Index() {
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             AI-powered hyperlocal delivery of fresh groceries and essentials.
-            Smart routing, demand prediction, and real-time tracking.
+            Smart routing, and real-time tracking.
           </p>
 
           {/* Search Bar */}
