@@ -253,9 +253,9 @@ export default function DeliveryDashboard() {
               <Package className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">12</div>
+              <div className="text-2xl font-bold">{completedDeliveries + orders.filter(o => o.status !== 'Delivered' && o.status !== 'Rejected').length}</div>
               <p className="text-xs text-muted-foreground">
-                8 completed, 4 pending
+                {completedDeliveries} completed, {orders.filter(o => o.status !== 'Delivered' && o.status !== 'Rejected').length} pending
               </p>
             </CardContent>
           </Card>
