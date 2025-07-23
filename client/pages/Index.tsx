@@ -134,6 +134,8 @@ export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProducts, setFilteredProducts] = useState(demoProducts);
+  const [showSearchSuggestions, setShowSearchSuggestions] = useState(false);
+  const [searchInputFocused, setSearchInputFocused] = useState(false);
 
   useEffect(() => {
     let filtered = demoProducts;
