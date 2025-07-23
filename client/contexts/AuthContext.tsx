@@ -125,6 +125,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         email: userData.email,
         phone: userData.phone,
         address: userData.address,
+        vehicleNumber: userData.vehicleNumber,
         role: userData.role,
         avatar: userData.avatar,
       };
