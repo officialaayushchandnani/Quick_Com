@@ -97,11 +97,51 @@ export default function DeliveryDashboard() {
   const [todayEarnings, setTodayEarnings] = useState(1560);
   const [completedDeliveries, setCompletedDeliveries] = useState(8);
   const [recentCompletions, setRecentCompletions] = useState([
-    { id: 'ORD010', date: new Date(Date.now() - 1000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 280, time: '12' },
-    { id: 'ORD009', date: new Date(Date.now() - 2000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 350, time: '15' },
-    { id: 'ORD008', date: new Date(Date.now() - 3000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 420, time: '18' },
-    { id: 'ORD007', date: new Date(Date.now() - 4000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 190, time: '10' },
-    { id: 'ORD006', date: new Date(Date.now() - 5000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 320, time: '22' }
+    {
+      id: "ORD010",
+      date: new Date(Date.now() - 1000000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      amount: 280,
+      time: "12",
+    },
+    {
+      id: "ORD009",
+      date: new Date(Date.now() - 2000000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      amount: 350,
+      time: "15",
+    },
+    {
+      id: "ORD008",
+      date: new Date(Date.now() - 3000000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      amount: 420,
+      time: "18",
+    },
+    {
+      id: "ORD007",
+      date: new Date(Date.now() - 4000000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      amount: 190,
+      time: "10",
+    },
+    {
+      id: "ORD006",
+      date: new Date(Date.now() - 5000000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      amount: 320,
+      time: "22",
+    },
   ]);
 
   const handleNavigate = (delivery: any) => {
@@ -148,54 +188,59 @@ export default function DeliveryDashboard() {
   };
 
   const handleAcceptOrder = (orderId: string) => {
-    setOrders(orders.map(order =>
-      order.id === orderId
-        ? { ...order, status: 'Accepted' }
-        : order
-    ));
-    toast.success('Order accepted successfully!');
+    setOrders(
+      orders.map((order) =>
+        order.id === orderId ? { ...order, status: "Accepted" } : order,
+      ),
+    );
+    toast.success("Order accepted successfully!");
   };
 
   const handleRejectOrder = (orderId: string) => {
-    setOrders(orders.map(order =>
-      order.id === orderId
-        ? { ...order, status: 'Rejected' }
-        : order
-    ));
-    toast.error('Order rejected');
+    setOrders(
+      orders.map((order) =>
+        order.id === orderId ? { ...order, status: "Rejected" } : order,
+      ),
+    );
+    toast.error("Order rejected");
   };
 
   const handleMarkPickup = (orderId: string) => {
-    setOrders(orders.map(order =>
-      order.id === orderId
-        ? { ...order, status: 'Picked Up' }
-        : order
-    ));
-    toast.success('Order marked as picked up!');
+    setOrders(
+      orders.map((order) =>
+        order.id === orderId ? { ...order, status: "Picked Up" } : order,
+      ),
+    );
+    toast.success("Order marked as picked up!");
   };
 
   const handleMarkDelivered = (orderId: string) => {
-    const order = orders.find(o => o.id === orderId);
+    const order = orders.find((o) => o.id === orderId);
     if (order) {
       // Update order status
-      setOrders(orders.map(o =>
-        o.id === orderId
-          ? { ...o, status: 'Delivered', completedAt: new Date() }
-          : o
-      ));
+      setOrders(
+        orders.map((o) =>
+          o.id === orderId
+            ? { ...o, status: "Delivered", completedAt: new Date() }
+            : o,
+        ),
+      );
 
       // Update earnings and delivery count
-      setTodayEarnings(prev => prev + order.expectedEarnings);
-      setCompletedDeliveries(prev => prev + 1);
+      setTodayEarnings((prev) => prev + order.expectedEarnings);
+      setCompletedDeliveries((prev) => prev + 1);
 
       // Add to recent completions
       const newCompletion = {
         id: order.id,
-        date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        date: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
         amount: order.expectedEarnings,
-        time: Math.floor(Math.random() * 10 + 10).toString() // Random delivery time for demo
+        time: Math.floor(Math.random() * 10 + 10).toString(), // Random delivery time for demo
       };
-      setRecentCompletions(prev => [newCompletion, ...prev.slice(0, 4)]);
+      setRecentCompletions((prev) => [newCompletion, ...prev.slice(0, 4)]);
 
       toast.success(`Order delivered! Earned ₹${order.expectedEarnings}`);
     }
@@ -253,9 +298,20 @@ export default function DeliveryDashboard() {
               <Package className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{completedDeliveries + orders.filter(o => o.status !== 'Delivered' && o.status !== 'Rejected').length}</div>
+              <div className="text-2xl font-bold">
+                {completedDeliveries +
+                  orders.filter(
+                    (o) => o.status !== "Delivered" && o.status !== "Rejected",
+                  ).length}
+              </div>
               <p className="text-xs text-muted-foreground">
-                {completedDeliveries} completed, {orders.filter(o => o.status !== 'Delivered' && o.status !== 'Rejected').length} pending
+                {completedDeliveries} completed,{" "}
+                {
+                  orders.filter(
+                    (o) => o.status !== "Delivered" && o.status !== "Rejected",
+                  ).length
+                }{" "}
+                pending
               </p>
             </CardContent>
           </Card>
@@ -312,11 +368,15 @@ export default function DeliveryDashboard() {
                       </div>
                       <Badge
                         variant={
-                          delivery.status === "Delivered" ? "default" :
-                          delivery.status === "Picked Up" ? "default" :
-                          delivery.status === "Accepted" ? "outline" :
-                          delivery.status === "Rejected" ? "destructive" :
-                          "secondary"
+                          delivery.status === "Delivered"
+                            ? "default"
+                            : delivery.status === "Picked Up"
+                              ? "default"
+                              : delivery.status === "Accepted"
+                                ? "outline"
+                                : delivery.status === "Rejected"
+                                  ? "destructive"
+                                  : "secondary"
                         }
                       >
                         {delivery.status}
@@ -437,28 +497,33 @@ export default function DeliveryDashboard() {
                       )}
 
                       {/* Common Actions */}
-                      {delivery.status !== "Delivered" && delivery.status !== "Rejected" && (
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleCallCustomer(delivery.customer.phone)}
-                            className="flex-1"
-                          >
-                            <Phone className="w-4 h-4 mr-2" />
-                            Call
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleViewCustomerDetails(delivery)}
-                            className="flex-1"
-                          >
-                            <User className="w-4 h-4 mr-2" />
-                            Details
-                          </Button>
-                        </div>
-                      )}
+                      {delivery.status !== "Delivered" &&
+                        delivery.status !== "Rejected" && (
+                          <div className="flex gap-2">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() =>
+                                handleCallCustomer(delivery.customer.phone)
+                              }
+                              className="flex-1"
+                            >
+                              <Phone className="w-4 h-4 mr-2" />
+                              Call
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() =>
+                                handleViewCustomerDetails(delivery)
+                              }
+                              className="flex-1"
+                            >
+                              <User className="w-4 h-4 mr-2" />
+                              Details
+                            </Button>
+                          </div>
+                        )}
                     </div>
                   </div>
                 ))}
@@ -476,7 +541,10 @@ export default function DeliveryDashboard() {
             <CardContent>
               <div className="space-y-4">
                 {recentCompletions.map((completion, i) => (
-                  <div key={completion.id} className="flex justify-between items-center">
+                  <div
+                    key={completion.id}
+                    className="flex justify-between items-center"
+                  >
                     <div className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600" />
                       <div>
@@ -487,9 +555,7 @@ export default function DeliveryDashboard() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="font-medium">
-                        ₹{completion.amount}
-                      </p>
+                      <p className="font-medium">₹{completion.amount}</p>
                       <p className="text-sm text-muted-foreground">
                         {completion.time} min
                       </p>
@@ -600,11 +666,15 @@ export default function DeliveryDashboard() {
                     <span className="text-sm">Status:</span>
                     <Badge
                       variant={
-                        selectedDelivery.status === "Delivered" ? "default" :
-                        selectedDelivery.status === "Picked Up" ? "default" :
-                        selectedDelivery.status === "Accepted" ? "outline" :
-                        selectedDelivery.status === "Rejected" ? "destructive" :
-                        "secondary"
+                        selectedDelivery.status === "Delivered"
+                          ? "default"
+                          : selectedDelivery.status === "Picked Up"
+                            ? "default"
+                            : selectedDelivery.status === "Accepted"
+                              ? "outline"
+                              : selectedDelivery.status === "Rejected"
+                                ? "destructive"
+                                : "secondary"
                       }
                     >
                       {selectedDelivery.status}

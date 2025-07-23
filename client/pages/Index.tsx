@@ -384,7 +384,7 @@ export default function Index() {
                     </Badge>
                   </div>
 
-                  {(!user || user.role !== 'admin') && (
+                  {(!user || user.role !== "admin") && (
                     <Button
                       className="w-full"
                       onClick={(e) => {
