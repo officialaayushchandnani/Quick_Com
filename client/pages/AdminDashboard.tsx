@@ -1048,6 +1048,87 @@ export default function AdminDashboard() {
             </Card>
           </TabsContent>
 
+          {/* Delivery Agents Tab */}
+          <TabsContent value="agents" className="space-y-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold">Delivery Agents Management</h2>
+              <div className="text-sm text-muted-foreground">
+                Total Agents: {demoDeliveryAgents.length}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {demoDeliveryAgents.map((agent) => (
+                <Card key={agent.id}>
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-lg">{agent.name}</CardTitle>
+                        <CardDescription>{agent.email}</CardDescription>
+                      </div>
+                      <Badge variant={agent.status === 'Active' ? 'default' : 'secondary'}>
+                        {agent.status}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Phone className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm">{agent.phone}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Truck className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm font-medium">{agent.vehicleNumber}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm">{agent.address}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm">Joined {new Date(agent.joinDate).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 pt-4 border-t">
+                      <div className="grid grid-cols-2 gap-4 text-center">
+                        <div>
+                          <p className="text-lg font-bold text-brand-green">{agent.totalDeliveries}</p>
+                          <p className="text-xs text-muted-foreground">Deliveries</p>
+                        </div>
+                        <div>
+                          <p className="text-lg font-bold text-brand-orange">₹{agent.earnings}</p>
+                          <p className="text-xs text-muted-foreground">Earnings</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-center gap-1 mt-2">
+                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <span className="text-sm font-medium">{agent.rating}</span>
+                        <span className="text-xs text-muted-foreground">rating</span>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-2 mt-4">
+                      <Button variant="outline" size="sm" className="flex-1">
+                        <Eye className="w-4 h-4 mr-2" />
+                        View Details
+                      </Button>
+                      <Button
+                        variant={agent.status === 'Active' ? 'destructive' : 'default'}
+                        size="sm"
+                        className="flex-1"
+                      >
+                        {agent.status === 'Active' ? 'Deactivate' : 'Activate'}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
           {/* Delivery Zones Tab */}
           <TabsContent value="zones" className="space-y-6">
             <div className="flex justify-between items-center">
