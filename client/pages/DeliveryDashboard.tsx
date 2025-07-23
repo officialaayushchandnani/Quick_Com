@@ -271,7 +271,7 @@ export default function DeliveryDashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {activeDeliveries.map((delivery, i) => (
+                {orders.map((delivery, i) => (
                   <div key={delivery.id} className="border rounded-lg p-4">
                     <div className="flex justify-between items-start mb-3">
                       <div>
