@@ -380,17 +380,19 @@ export default function Index() {
                     </Badge>
                   </div>
 
-                  <Button
-                    className="w-full"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleAddToCart(product);
-                    }}
-                    disabled={!user}
-                  >
-                    <Plus className="w-4 h-4 mr-2" />
-                    {user ? "Add to Cart" : "Sign in to order"}
-                  </Button>
+                  {(!user || user.role !== 'admin') && (
+                    <Button
+                      className="w-full"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAddToCart(product);
+                      }}
+                      disabled={!user}
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      {user ? "Add to Cart" : "Sign in to order"}
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             ))}
