@@ -337,10 +337,22 @@ export default function DeliveryDashboard() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-2">
                       <Package className="w-4 h-4 text-muted-foreground" />
                       <span className="text-sm">
                         {delivery.items.join(", ")}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <DollarSign className="w-4 h-4 text-brand-green" />
+                        <span className="text-sm font-medium text-brand-green">
+                          Expected: ₹{delivery.expectedEarnings}
+                        </span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">
+                        Order: ₹{delivery.amount}
                       </span>
                     </div>
 
