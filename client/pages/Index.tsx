@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { SearchSuggestions } from "@/components/ui/search-suggestions";
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart, Product } from "@/contexts/CartContext";
 import { toast } from "sonner";
