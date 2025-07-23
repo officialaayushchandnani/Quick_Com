@@ -135,6 +135,42 @@ export default function DeliveryDashboard() {
     setShowCustomerDetails(true);
   };
 
+  const handleAcceptOrder = (orderId: string) => {
+    setOrders(orders.map(order =>
+      order.id === orderId
+        ? { ...order, status: 'Accepted' }
+        : order
+    ));
+    toast.success('Order accepted successfully!');
+  };
+
+  const handleRejectOrder = (orderId: string) => {
+    setOrders(orders.map(order =>
+      order.id === orderId
+        ? { ...order, status: 'Rejected' }
+        : order
+    ));
+    toast.error('Order rejected');
+  };
+
+  const handleMarkPickup = (orderId: string) => {
+    setOrders(orders.map(order =>
+      order.id === orderId
+        ? { ...order, status: 'Picked Up' }
+        : order
+    ));
+    toast.success('Order marked as picked up!');
+  };
+
+  const handleMarkDelivered = (orderId: string) => {
+    setOrders(orders.map(order =>
+      order.id === orderId
+        ? { ...order, status: 'Delivered' }
+        : order
+    ));
+    toast.success('Order marked as delivered!');
+  };
+
   if (!user || user.role !== "delivery_agent") {
     return (
       <div className="min-h-screen flex items-center justify-center">
