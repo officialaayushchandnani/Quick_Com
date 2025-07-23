@@ -50,6 +50,7 @@ const activeDeliveries = [
     },
     items: ["Fresh Milk", "Brown Bread", "Bananas"],
     amount: 190,
+    expectedEarnings: 35,
     status: "Picked Up",
     estimatedTime: "15 mins",
     specialInstructions: "Ring the doorbell twice",
