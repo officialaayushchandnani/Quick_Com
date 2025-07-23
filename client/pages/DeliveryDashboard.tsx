@@ -88,6 +88,7 @@ const activeDeliveries = [
 
 export default function DeliveryDashboard() {
   const { user, logout } = useAuth();
+  const [orders, setOrders] = useState(activeDeliveries);
   const [selectedDelivery, setSelectedDelivery] = useState<any>(null);
   const [showCustomerDetails, setShowCustomerDetails] = useState(false);
 
