@@ -287,12 +287,22 @@ export default function Index() {
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto mb-8">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5 z-10" />
               <Input
                 placeholder="Search for products, categories..."
                 className="h-14 pl-12 pr-4 text-lg rounded-xl border-2"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleSearchChange}
+                onFocus={handleSearchFocus}
+                onBlur={handleSearchBlur}
+              />
+              <SearchSuggestions
+                query={searchQuery}
+                products={demoProducts}
+                categories={categories}
+                onSuggestionClick={handleSuggestionClick}
+                onProductClick={handleProductClick}
+                isVisible={showSearchSuggestions}
               />
             </div>
           </div>
