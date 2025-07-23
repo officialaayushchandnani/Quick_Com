@@ -191,6 +191,14 @@ const demoCustomers = [
   },
 ];
 
+const demoDeliveryAgents = [
+  { id: '1', name: 'Jane Agent', email: 'jane@agent.com', phone: '+91 98765 43211', vehicleNumber: 'GJ-05-AB-1234', address: '456 Agent Colony, Vastrapur, Ahmedabad', joinDate: '2024-01-10', status: 'Active', totalDeliveries: 156, rating: 4.8, earnings: 15600 },
+  { id: '2', name: 'Rahul Kumar', email: 'rahul@agent.com', phone: '+91 98765 43212', vehicleNumber: 'GJ-05-CD-5678', address: '789 Delivery Hub, Satellite, Ahmedabad', joinDate: '2024-02-15', status: 'Active', totalDeliveries: 98, rating: 4.6, earnings: 9800 },
+  { id: '3', name: 'Anita Shah', email: 'anita@agent.com', phone: '+91 98765 43213', vehicleNumber: 'GJ-05-EF-9012', address: '321 Rider Street, CG Road, Ahmedabad', joinDate: '2023-12-05', status: 'Active', totalDeliveries: 203, rating: 4.9, earnings: 20300 },
+  { id: '4', name: 'Vikram Singh', email: 'vikram@agent.com', phone: '+91 98765 43214', vehicleNumber: 'GJ-05-GH-3456', address: '654 Speed Lane, SG Highway, Ahmedabad', joinDate: '2024-03-01', status: 'Inactive', totalDeliveries: 45, rating: 4.3, earnings: 4500 },
+  { id: '5', name: 'Pooja Joshi', email: 'pooja@agent.com', phone: '+91 98765 43215', vehicleNumber: 'GJ-05-IJ-7890', address: '987 Quick Deliver, Bopal, Ahmedabad', joinDate: '2024-01-25', status: 'Active', totalDeliveries: 134, rating: 4.7, earnings: 13400 }
+];
+
 const ahmedabadZones = [
   {
     id: "1",
