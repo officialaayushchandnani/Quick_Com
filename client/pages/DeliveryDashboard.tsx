@@ -30,6 +30,11 @@ import {
   Mail,
   Home,
   ExternalLink,
+  Check,
+  X,
+  Truck,
+  PackageCheck,
+  ThumbsUp,
 } from "lucide-react";
 
 // Demo delivery data
