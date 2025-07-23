@@ -79,6 +79,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           role: "delivery_agent",
           phone: "+91 98765 43211",
           address: "456 Agent Colony, Vastrapur, Ahmedabad, Gujarat 380058",
+          vehicleNumber: "GJ-05-AB-1234",
         },
         {
           id: "3",
