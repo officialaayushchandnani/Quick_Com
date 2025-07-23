@@ -585,9 +585,15 @@ export default function DeliveryDashboard() {
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm">Amount:</span>
+                    <span className="text-sm">Order Amount:</span>
                     <span className="text-sm font-medium">
                       ₹{selectedDelivery.amount}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Expected Earnings:</span>
+                    <span className="text-sm font-medium text-brand-green">
+                      ₹{selectedDelivery.expectedEarnings}
                     </span>
                   </div>
                   <div className="flex justify-between">
