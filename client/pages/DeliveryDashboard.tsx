@@ -282,9 +282,11 @@ export default function DeliveryDashboard() {
                       </div>
                       <Badge
                         variant={
-                          delivery.status === "In Transit"
-                            ? "default"
-                            : "secondary"
+                          delivery.status === "Delivered" ? "default" :
+                          delivery.status === "Picked Up" ? "default" :
+                          delivery.status === "Accepted" ? "outline" :
+                          delivery.status === "Rejected" ? "destructive" :
+                          "secondary"
                         }
                       >
                         {delivery.status}
