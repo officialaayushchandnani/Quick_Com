@@ -82,6 +82,7 @@ const activeDeliveries = [
     },
     items: ["Orange Juice", "Fresh Milk"],
     amount: 185,
+    expectedEarnings: 32,
     status: "Assigned",
     estimatedTime: "25 mins",
     specialInstructions: "Leave at gate if no one answers",
