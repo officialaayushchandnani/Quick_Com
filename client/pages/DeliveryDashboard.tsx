@@ -94,6 +94,15 @@ export default function DeliveryDashboard() {
   const [orders, setOrders] = useState(activeDeliveries);
   const [selectedDelivery, setSelectedDelivery] = useState<any>(null);
   const [showCustomerDetails, setShowCustomerDetails] = useState(false);
+  const [todayEarnings, setTodayEarnings] = useState(1560);
+  const [completedDeliveries, setCompletedDeliveries] = useState(8);
+  const [recentCompletions, setRecentCompletions] = useState([
+    { id: 'ORD010', date: new Date(Date.now() - 1000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 280, time: '12' },
+    { id: 'ORD009', date: new Date(Date.now() - 2000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 350, time: '15' },
+    { id: 'ORD008', date: new Date(Date.now() - 3000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 420, time: '18' },
+    { id: 'ORD007', date: new Date(Date.now() - 4000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 190, time: '10' },
+    { id: 'ORD006', date: new Date(Date.now() - 5000000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), amount: 320, time: '22' }
+  ]);
 
   const handleNavigate = (delivery: any) => {
     const { address, coordinates } = delivery.customer;
