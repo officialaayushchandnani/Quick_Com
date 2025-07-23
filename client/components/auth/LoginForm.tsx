@@ -206,21 +206,40 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
                     }
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="reg-address">Address</Label>
-                  <Input
-                    id="reg-address"
-                    placeholder="Enter your complete address"
-                    value={registerData.address}
-                    onChange={(e) =>
-                      setRegisterData((prev) => ({
-                        ...prev,
-                        address: e.target.value,
-                      }))
-                    }
-                    required
-                  />
-                </div>
+                {registerData.role === "customer" && (
+                  <div className="space-y-2">
+                    <Label htmlFor="reg-address">Delivery Address</Label>
+                    <Input
+                      id="reg-address"
+                      placeholder="Enter your complete delivery address"
+                      value={registerData.address}
+                      onChange={(e) =>
+                        setRegisterData((prev) => ({
+                          ...prev,
+                          address: e.target.value,
+                        }))
+                      }
+                      required
+                    />
+                  </div>
+                )}
+                {registerData.role === "delivery_agent" && (
+                  <div className="space-y-2">
+                    <Label htmlFor="reg-vehicle">Vehicle Number</Label>
+                    <Input
+                      id="reg-vehicle"
+                      placeholder="Enter your vehicle number (e.g., GJ-05-AB-1234)"
+                      value={registerData.vehicleNumber}
+                      onChange={(e) =>
+                        setRegisterData((prev) => ({
+                          ...prev,
+                          vehicleNumber: e.target.value,
+                        }))
+                      }
+                      required
+                    />
+                  </div>
+                )}
                 <div className="space-y-2">
                   <Label htmlFor="role">Account Type</Label>
                   <Select
