@@ -170,7 +170,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                       </span>
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      Free delivery on orders over ₹500
+                      Free delivery on orders over ₹199
                     </div>
                   </div>
                 </CardContent>
@@ -189,7 +189,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                     </div>
                     <div className="flex justify-between">
                       <span>Delivery Fee</span>
-                      <span>{getTotalPrice() >= 500 ? "Free" : "₹40"}</span>
+                      <span>{getTotalPrice() >= 199 ? "Free" : "₹40"}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Tax</span>
@@ -201,7 +201,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                         ₹
                         {(
                           getTotalPrice() +
-                          (getTotalPrice() >= 500 ? 0 : 40) +
+                          (getTotalPrice() >= 199 ? 0 : 40) +
                           getTotalPrice() * 0.18
                         ).toFixed(0)}
                       </span>
