@@ -35,6 +35,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
     password: "",
     phone: "",
     address: "",
+    vehicleNumber: "",
     role: "customer" as UserRole,
   });
 
