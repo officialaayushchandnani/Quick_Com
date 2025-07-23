@@ -314,31 +314,109 @@ export default function DeliveryDashboard() {
                       </span>
                     </div>
 
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        className="flex-1"
-                        onClick={() => handleNavigate(delivery)}
-                      >
-                        <Navigation className="w-4 h-4 mr-2" />
-                        Navigate
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() =>
-                          handleCallCustomer(delivery.customer.phone)
-                        }
-                      >
-                        <Phone className="w-4 h-4" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => handleViewCustomerDetails(delivery)}
-                      >
-                        <User className="w-4 h-4" />
-                      </Button>
+                    {/* Action Buttons Based on Status */}
+                    <div className="space-y-2">
+                      {delivery.status === "Assigned" && (
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            className="flex-1"
+                            onClick={() => handleAcceptOrder(delivery.id)}
+                          >
+                            <Check className="w-4 h-4 mr-2" />
+                            Accept Order
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="destructive"
+                            onClick={() => handleRejectOrder(delivery.id)}
+                          >
+                            <X className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      )}
+
+                      {delivery.status === "Accepted" && (
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            className="flex-1"
+                            onClick={() => handleMarkPickup(delivery.id)}
+                          >
+                            <PackageCheck className="w-4 h-4 mr-2" />
+                            Mark as Picked Up
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleNavigate(delivery)}
+                          >
+                            <Navigation className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      )}
+
+                      {delivery.status === "Picked Up" && (
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            className="flex-1"
+                            onClick={() => handleMarkDelivered(delivery.id)}
+                          >
+                            <ThumbsUp className="w-4 h-4 mr-2" />
+                            Mark as Delivered
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleNavigate(delivery)}
+                          >
+                            <Navigation className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      )}
+
+                      {delivery.status === "Delivered" && (
+                        <div className="flex justify-center">
+                          <Badge variant="default" className="bg-green-600">
+                            <CheckCircle className="w-4 h-4 mr-2" />
+                            Completed
+                          </Badge>
+                        </div>
+                      )}
+
+                      {delivery.status === "Rejected" && (
+                        <div className="flex justify-center">
+                          <Badge variant="destructive">
+                            <X className="w-4 h-4 mr-2" />
+                            Rejected
+                          </Badge>
+                        </div>
+                      )}
+
+                      {/* Common Actions */}
+                      {delivery.status !== "Delivered" && delivery.status !== "Rejected" && (
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleCallCustomer(delivery.customer.phone)}
+                            className="flex-1"
+                          >
+                            <Phone className="w-4 h-4 mr-2" />
+                            Call
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleViewCustomerDetails(delivery)}
+                            className="flex-1"
+                          >
+                            <User className="w-4 h-4 mr-2" />
+                            Details
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
