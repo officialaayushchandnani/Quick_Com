@@ -44,15 +44,11 @@ export const SearchSuggestions: React.FC<SearchSuggestionsProps> = ({
   const searchSuggestions = [
     ...new Set([
       ...products
-        .filter((p) =>
-          p.name.toLowerCase().includes(query.toLowerCase()),
-        )
+        .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
         .map((p) => p.name)
         .slice(0, 3),
       ...products
-        .filter((p) =>
-          p.category.toLowerCase().includes(query.toLowerCase()),
-        )
+        .filter((p) => p.category.toLowerCase().includes(query.toLowerCase()))
         .map((p) => p.category)
         .slice(0, 2),
     ]),
@@ -149,7 +145,9 @@ export const SearchSuggestions: React.FC<SearchSuggestionsProps> = ({
         <div className="p-4 text-center text-muted-foreground">
           <Search className="w-8 h-8 mx-auto mb-2 opacity-50" />
           <p>No results found for "{query}"</p>
-          <p className="text-sm mt-1">Try searching for products or categories</p>
+          <p className="text-sm mt-1">
+            Try searching for products or categories
+          </p>
         </div>
       )}
     </div>

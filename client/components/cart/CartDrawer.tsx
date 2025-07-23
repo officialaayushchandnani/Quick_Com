@@ -130,7 +130,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                             </div>
                             <div className="text-right">
                               <p className="font-semibold">
-                                ₹{(item.product.price * item.quantity).toFixed(0)}
+                                ₹
+                                {(item.product.price * item.quantity).toFixed(
+                                  0,
+                                )}
                               </p>
                               <Button
                                 size="sm"
@@ -161,7 +164,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-sm">123 Main St, Satellite, Ahmedabad</span>
+                      <span className="text-sm">
+                        123 Main St, Satellite, Ahmedabad
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-muted-foreground" />
