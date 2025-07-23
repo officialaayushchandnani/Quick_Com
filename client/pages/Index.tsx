@@ -361,7 +361,7 @@ export default function Index() {
                     <h3 className="font-semibold text-lg">{product.name}</h3>
                     <div className="text-right">
                       <p className="text-2xl font-bold text-brand-green">
-                        ${product.price}
+                        ₹{product.price}
                       </p>
                     </div>
                   </div>
