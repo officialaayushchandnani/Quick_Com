@@ -14,6 +14,7 @@ export interface User {
   email: string;
   phone?: string;
   address?: string;
+  vehicleNumber?: string;
   role: UserRole;
   avatar?: string;
 }
