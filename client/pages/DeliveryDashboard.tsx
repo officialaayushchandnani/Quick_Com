@@ -268,7 +268,7 @@ export default function DeliveryDashboard() {
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">₹1560</div>
+              <div className="text-2xl font-bold">₹{todayEarnings}</div>
               <p className="text-xs text-muted-foreground">
                 +₹280 from yesterday
               </p>
