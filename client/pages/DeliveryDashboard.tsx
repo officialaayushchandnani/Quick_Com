@@ -66,6 +66,7 @@ const activeDeliveries = [
     },
     items: ["Greek Yogurt", "Tomatoes"],
     amount: 210,
+    expectedEarnings: 40,
     status: "Assigned",
     estimatedTime: "20 mins",
     specialInstructions: "Call before delivery",
